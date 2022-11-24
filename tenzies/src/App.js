@@ -1,6 +1,7 @@
 import React from "react"
 import "./styles.css"
 import Dice from "./components/Dice";
+import {nanoid} from "nanoid";
 
 function App() {
   const [nums, setNums] = React.useState(allNewDice())
@@ -8,12 +9,19 @@ function App() {
   function allNewDice(){
     const arr = []
     for(let i = 0; i <10; i++){
-      arr.push(Math.floor(Math.random() * 6) + 1);
+      arr.push({
+        value: (Math.floor(Math.random() * 6) + 1), 
+        isHeld: false,
+        id: nanoid()
+      });
     }
     return arr
   }
 
-  const numsElements = nums.map(item=> <Dice die={item}/>)
+  const numsElements = nums.map(item=> <Dice 
+    key = {item.id}
+    die={item.value}
+    />)
 
   function rollDice(){
     setNums(allNewDice())
