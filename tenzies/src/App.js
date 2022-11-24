@@ -21,6 +21,7 @@ function App() {
   const numsElements = nums.map(item=> <Dice 
     key = {item.id}
     die={item.value}
+    isHeld={item.isHeld}
     />)
 
   function rollDice(){
