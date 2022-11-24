@@ -15,6 +15,10 @@ function App() {
 
   const numsElements = nums.map(item=> <Dice die={item}/>)
 
+  function rollDice(){
+    setNums(allNewDice())
+  }
+
   
   return (
     <main className="app--border">
@@ -23,7 +27,7 @@ function App() {
       <div className="dice--container">
         {numsElements}
       </div>
-      <button>Roll Die</button>
+      <button className="roll--dice" onClick={rollDice}>Roll</button>
     </main>
   );
 }
